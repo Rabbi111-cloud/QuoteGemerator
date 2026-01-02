@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quote Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .quote {
+      background: #1e293b;
+      margin: 15px auto;
+      padding: 15px;
+      width: 70%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AI Quote Generator</h1>
+  <p>Select a theme and generate quotes</p>
+
+  <select id="theme">
+    <option value="success">Success</option>
+    <option value="love">Love</option>
+    <option value="discipline">Discipline</option>
+    <option value="faith">Faith</option>
+  </select>
+
+  <button onclick="generateQuotes()">Generate Quotes</button>
+
+  <div id="quotes"></div>
+
+  <script>
+    const quotes = {
+      success: [
+        "Success is not final; failure is not fatal.",
+        "Great things never come from comfort zones.",
+        "Dream big. Start small. Act now."
+      ],
+      love: [
+        "Love is composed of a single soul inhabiting two bodies.",
+        "Where there is love, there is life.",
+        "Love all, trust a few."
+      ],
+      discipline: [
+        "Discipline is choosing what you want most over what you want now.",
+        "Without discipline, success is impossible.",
+        "Consistency beats motivation."
+      ],
+      faith: [
+        "Faith is taking the first step without seeing the whole staircase.",
+        "Let your faith be bigger than your fear.",
+        "Faith moves mountains."
+      ]
+    };
+
+    function generateQuotes() {
+      const theme = document.getElementById("theme").value;
+      const container = document.getElementById("quotes");
+      container.innerHTML = "";
+
+      const selected = quotes[theme];
+
+      for (let i = 0; i < 3; i++) {
+        const div = document.createElement("div");
+        div.className = "quote";
+        div.innerText = selected[i % selected.length];
+        container.appendChild(div);
+      }
+    }
+  </script>
+
+</body>
+</html>
